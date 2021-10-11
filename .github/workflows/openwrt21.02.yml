@@ -7,7 +7,7 @@ name: openwrt21.02稳定版追新
 on:
   workflow_dispatch:
     # Inputs the workflow accepts.
-    #inputs:
+    inputs:
       #name:
         # Friendly description to be shown in the UI instead of 'name'
         #description: 'Person to greet'
@@ -15,16 +15,84 @@ on:
         #default: 'World'
         # Input has to be provided for the workflow to run
         #required: true
+      release:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 是否需要发布到Release?(不发布也可以到Artifacts下载)
+        # Default value if no value is explicitly provided
+        default: 'yes'
+        # Input has to be provided for the workflow to run
+        required: false
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "greet"
   greet:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+  # The type of runner that the job will run on ubuntu-latest
+    runs-on: ubuntu-20.04
 
     # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-    # Runs a single command using the runners shell
-    - name: Send greeting
-      run: echo "Hello ${{ github.event.inputs.name }}"
+    steps:    
+    - name: 生成版本号
+      run: |
+        whoami
+        id
+        echo 接收到的输入参数:
+        echo "${{ github.event.inputs.production }}"
+        echo "${{ github.event.inputs.release }}"
+        echo 
+        echo 当前目录:$(pwd)
+        # 版本号,用日期
+        VERSION=$(TZ='Asia/Shanghai' date +%Y%m%d.%H%M)
+        # $GITHUB_ENV变量必须要在下一个流程才生效
+        echo "NAME=openwrt_k2p+k2+x64+x32_21.02稳定版_$VERSION" >> $GITHUB_ENV
+        ip addr
+      
+    - name: 准备编译环境
+      if: true
+      run: | 
+        echo ${{ env.NAME }}
+        sudo apt install build-essential libncurses5-dev libncursesw5-dev \
+        zlib1g-dev gawk git gettext libssl-dev xsltproc rsync wget unzip python  > /dev/null
+  
+    - name: 下载编译脚本
+      run: |
+        git clone --depth=1 https://github.com/hanwckf/rt-n56u.git ${{ env.DIR }}  > /dev/null
+        cd ${{ env.DIR }}/toolchain-mipsel
+        sh dl_toolchain.sh > /dev/null
+        pwd
+    - name: 下载编译脚本
+      uses: actions/checkout@v2.3.4
+      with:
+        # Repository name with owner. For example, actions/checkout
+        #repository: # optional, default is ${{ github.repository }}
+        # The branch, tag or SHA to checkout. When checking out the repository that triggered a workflow, this defaults to the reference or SHA for that event.  Otherwise, uses the default branch.
+        ref: main
+        path: buildsh
+     
+        
+    - name: 开始编译
+      if: true
+      run: |
+        echo $GITHUB_WORKSPACE
+        bash $GITHUB_WORKSPACE/buildsh/buildsh/openwrt-fast-auto-package21.02.sh
+        
+    - name : 上传编译的固件Artifacts
+      uses: actions/upload-artifact@v2
+      if: true
+      with:
+        name: ${{ env.NAME }}
+        path: /opt/openwrt/image
+        
+    - name: 发布到Release
+      if: ${{ github.event.inputs.release == 'yes' }}
+      uses: softprops/action-gh-release@v1
+      with:
+        name: ${{ env.NAME }}
+        tag_name: ${{ env.NAME }}
+        body_path: /opt/openwrt/image/readme.txt
+        draft: false
+        prerelease: false
+        files: /opt/openwrt/image/*
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
