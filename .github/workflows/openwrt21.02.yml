@@ -48,7 +48,7 @@ jobs:
         echo "${{ github.event.inputs.release }}"
         echo 触发事件:$GITHUB_EVENT_NAME
         echo 触发者:$GITHUB_ACTOR
-        exit 1
+        # exit 1
         echo 
         echo 当前目录:$(pwd)
         # 版本号,用日期
