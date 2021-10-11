@@ -55,12 +55,6 @@ jobs:
         zlib1g-dev gawk git gettext libssl-dev xsltproc rsync wget unzip python  > /dev/null
   
     - name: 下载编译脚本
-      run: |
-        git clone --depth=1 https://github.com/hanwckf/rt-n56u.git ${{ env.DIR }}  > /dev/null
-        cd ${{ env.DIR }}/toolchain-mipsel
-        sh dl_toolchain.sh > /dev/null
-        pwd
-    - name: 下载编译脚本
       uses: actions/checkout@v2.3.4
       with:
         # Repository name with owner. For example, actions/checkout
