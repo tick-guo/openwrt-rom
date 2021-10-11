@@ -1,6 +1,6 @@
 # This is a basic workflow that is manually triggered
 
-name: openwrt21.02稳定版追新
+name: openwrt21.02稳定和追新
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
