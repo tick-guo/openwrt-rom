@@ -10,7 +10,7 @@ on:
    # 每天中国7 , 19点编译
    #- cron:  '5 23 * * *'
    #test
-   - cron:  '*/5 * * * *'
+   - cron:  '1/5 * * * *'
    
   workflow_dispatch:
     # Inputs the workflow accepts.
