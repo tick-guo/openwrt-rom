@@ -6,11 +6,11 @@ name: openwrt21.02稳定版追新
 # or API.
 on:
   schedule:
-   # UTC比中国少8个小时, 中国19,utc=19-8=11, 7-8=-1=23
-   # 每天中国7 , 19点编译
-   #- cron:  '5 23 * * *'
+   # UTC比中国少8个小时
+   # 每天中国6-8=-2=22点编译
+   - cron:  '5 22 * * *'
    #test
-   - cron:  '1/5 * * * *'
+   #- cron:  '1/5 * * * *'
    
   workflow_dispatch:
     # Inputs the workflow accepts.
