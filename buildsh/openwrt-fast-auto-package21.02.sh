@@ -266,6 +266,143 @@ mv -f *squashfs-sysupgrade.bin /opt/openwrt/image/
 
 }
 
+#============================================================dev
+function build64dev(){
+cd /opt/openwrt
+
+mkdir x64dev
+cd x64dev
+pwd
+
+ls *.xz
+if [ $? != 0 ];then
+  #wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/x86/64/openwrt-imagebuilder-21.02-SNAPSHOT-x86-64.Linux-x86_64.tar.xz > /dev/null
+  wget  https://downloads.openwrt.org/snapshots/targets/x86/64/openwrt-imagebuilder-x86-64.Linux-x86_64.tar.xz
+
+  tar -xf openwrt-imagebuilder-x86-64.Linux-x86_64.tar.xz
+fi
+
+cd openwrt-imagebuilder-x86-64.Linux-x86_64 
+
+#差异包
+val_base="\
+ libiwinfo \
+ libiwinfo-data \
+ "
+
+make info | grep "Current Revision"
+
+create_custom
+
+make image PROFILE=generic FILES="files" PACKAGES="$val_base $val_more"
+cd bin/targets/x86/64
+ll
+mv -f *squashfs-combined.img.gz /opt/openwrt/image/
+
+}
+
+function build32dev(){
+cd /opt/openwrt
+
+mkdir x32dev
+cd x32dev
+pwd
+
+ls *.xz
+if [ $? != 0 ];then
+  wget https://downloads.openwrt.org/snapshots/targets/x86/generic/openwrt-imagebuilder-x86-generic.Linux-x86_64.tar.xz > /dev/null
+
+  tar -xf openwrt-imagebuilder-x86-generic.Linux-x86_64.tar.xz
+fi
+
+cd openwrt-imagebuilder-x86-generic.Linux-x86_64
+
+##差异包
+val_base="\
+ libiwinfo \
+ libiwinfo-data \
+ "
+
+make info 
+
+create_custom
+
+make image PROFILE=generic FILES="files" PACKAGES="$val_base $val_more"
+cd bin/targets/x86/generic
+#openwrt-21.02-snapshot-r16302-9b258f220f-x86-generic-generic-squashfs-combined.img.gz
+#openwrt-x86-generic-generic-squashfs-combined.img.gz
+ll
+mv -f *squashfs-combined.img.gz /opt/openwrt/image/
+
+}
+
+function buildk2dev(){
+cd /opt/openwrt
+
+mkdir k2dev
+cd k2dev
+pwd
+
+ls *.xz
+if [ $? != 0 ];then
+ 
+  wget https://downloads.openwrt.org/snapshots/targets/ramips/mt7620/openwrt-imagebuilder-ramips-mt7620.Linux-x86_64.tar.xz > /dev/null
+
+  tar -xf openwrt-imagebuilder-ramips-mt7620.Linux-x86_64.tar.xz
+fi
+
+cd openwrt-imagebuilder-ramips-mt7620.Linux-x86_64
+
+##差异包
+val_base="\
+ "
+
+make info 
+
+create_custom
+
+make image PROFILE=phicomm_k2-v22.4 FILES="files" PACKAGES="$val_base $val_more"
+cd bin/targets/ramips/mt7620
+#openwrt-ramips-mt7620-phicomm_k2-v22.4-squashfs-sysupgrade.bin
+ll
+mv -f *squashfs-sysupgrade.bin /opt/openwrt/image/
+
+}
+
+function buildk2pdev(){
+cd /opt/openwrt
+
+mkdir k2pdev
+cd k2pdev
+pwd
+
+ls *.xz
+if [ $? != 0 ];then
+
+  wget https://downloads.openwrt.org/snapshots/targets/ramips/mt7621/openwrt-imagebuilder-ramips-mt7621.Linux-x86_64.tar.xz > /dev/null
+
+  tar -xf openwrt-imagebuilder-ramips-mt7621.Linux-x86_64.tar.xz
+fi
+
+cd openwrt-imagebuilder-ramips-mt7621.Linux-x86_64
+
+##差异包
+val_base="\
+ "
+
+make info 
+
+create_custom
+
+make image PROFILE=phicomm_k2p FILES="files" PACKAGES="$val_base $val_more"
+cd bin/targets/ramips/mt7621
+#openwrt-ramips-mt7621-phicomm_k2p-squashfs-sysupgrade.bin
+ll
+mv -f *squashfs-sysupgrade.bin /opt/openwrt/image/
+
+}
+
+
 function getinfo(){
 cd /opt/openwrt/image/
 
@@ -277,8 +414,25 @@ echo md5校验值 >> readme.txt
 md5sum *.bin >> readme.txt
 md5sum *.gz >> readme.txt
 
+cat << "EOF" >> readme.txt
+
+# 附件会生成8个升级包
+
+1. 名字中有21.02的是**稳定版**,偶尔会有更新
+2. 没有21.02的是**最新开发版**,每天都会有不少更新
+3. 安装后可以从路由器内从软件包内更新,不用每次刷整包
+
+
+EOF
 
 }
+
+#最新开发版
+buildk2pdev
+buildk2dev
+build32dev
+build64dev
+#21.02 稳定版
 buildk2p
 buildk2
 build32
