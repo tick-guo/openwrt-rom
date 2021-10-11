@@ -4,7 +4,7 @@
 # 状态
 https://github.com/tick-guo/openwrt-rom
 
-![workflow](https://github.com/tick-guo/openwrt-rom/actions/workflows/Padavan.yml/badge.svg)
+![workflow](https://github.com/tick-guo/openwrt-rom/actions/workflows/openwrt21.02.yml/badge.svg)
 ![GitHub all releases](https://img.shields.io/github/downloads/tick-guo/openwrt-rom/total?label=下载量)
 ![GitHub repo size](https://img.shields.io/github/repo-size/tick-guo/openwrt-rom?label=库大小)
 
