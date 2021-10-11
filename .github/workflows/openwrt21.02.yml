@@ -55,6 +55,15 @@ jobs:
         VERSION=$(TZ='Asia/Shanghai' date +%Y%m%d.%H%M)
         # $GITHUB_ENV变量必须要在下一个流程才生效
         echo "NAME=openwrt21.02稳定追新_${VERSION}" >> $GITHUB_ENV
+        # 两个发布条件
+        if [ ${{ github.event.inputs.release == 'yes' }} ];then
+          echo "TO_RELEASE=yes" >> $GITHUB_ENV
+        fi
+        # 计划执行,发布release
+        if [ "$GITHUB_EVENT_NAME" == "schedule" }} ];then
+          echo "TO_RELEASE=yes" >> $GITHUB_ENV
+        fi
+        
         ip addr
       
     - name: 准备编译环境
@@ -88,7 +97,7 @@ jobs:
         path: /opt/openwrt/image
         
     - name: 发布到Release
-      if: ${{ github.event.inputs.release == 'yes' }}
+      if: ${{ env.TO_RELEASE == 'yes' }}
       uses: softprops/action-gh-release@v1
       with:
         name: ${{ env.NAME }}
