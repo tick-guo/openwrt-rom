@@ -44,7 +44,7 @@ jobs:
         # 版本号,用日期
         VERSION=$(TZ='Asia/Shanghai' date +%Y%m%d.%H%M)
         # $GITHUB_ENV变量必须要在下一个流程才生效
-        echo "NAME=openwrt_k2p+k2+x64+x32_21.02稳定版_$VERSION" >> $GITHUB_ENV
+        echo "NAME=openwrt21.02稳定追新_$VERSION_k2p+k2+x64+x32" >> $GITHUB_ENV
         ip addr
       
     - name: 准备编译环境
