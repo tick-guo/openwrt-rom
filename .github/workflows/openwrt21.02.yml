@@ -44,6 +44,8 @@ jobs:
         echo 接收到的输入参数:
         echo "${{ github.event.inputs.production }}"
         echo "${{ github.event.inputs.release }}"
+        echo 触发事件:$GITHUB_EVENT_NAME
+        exit 1
         echo 
         echo 当前目录:$(pwd)
         # 版本号,用日期
