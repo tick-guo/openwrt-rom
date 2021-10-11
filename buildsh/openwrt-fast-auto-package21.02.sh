@@ -20,15 +20,15 @@ echo $MYINFO
 #自定义lan ip, 设置中国时区
 mkdir -p files/etc/uci-defaults
 pushd files/etc/uci-defaults
+
 cat << EOF > 01_tick_custom
 #!/bin/sh
-
 uci -q set system.@system[0].notes=${MYINFO}
 uci -q commit 
 EOF
+chmod 755 01_tick_custom
 
-cat << "EOF" >> 01_tick_custom
-
+cat << "EOF" > 16_tick_custom
 if [ "$(uci -q get system.@tick[0].init)" = "true" ];then
   echo upgrade
   exit 0
@@ -62,14 +62,12 @@ add system tick
 commit 
 set system.@tick[0].init='true'
 commit
-
 EOI
-
 echo end of tick_custom
 exit 0
-
 EOF
-chmod 755 01_tick_custom
+chmod 755 16_tick_custom
+
 popd
 
 }
