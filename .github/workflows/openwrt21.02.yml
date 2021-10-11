@@ -5,6 +5,11 @@ name: openwrt21.02稳定版追新
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
 on:
+  schedule:
+   # UTC比中国少8个小时, 中国19,utc=19-8=11, 7-8=-1=23
+   # 每天中国7 19点编译
+   - cron:  '10 23,11 * * *'
+   
   workflow_dispatch:
     # Inputs the workflow accepts.
     inputs:
