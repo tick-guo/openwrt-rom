@@ -121,7 +121,7 @@ pwd
 
 ls *.xz
 if [ $? != 0 ];then
-  wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/x86/64/openwrt-imagebuilder-21.02-SNAPSHOT-x86-64.Linux-x86_64.tar.xz
+  wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/x86/64/openwrt-imagebuilder-21.02-SNAPSHOT-x86-64.Linux-x86_64.tar.xz > /dev/null
 
   tar -xf openwrt-imagebuilder-21.02-SNAPSHOT-x86-64.Linux-x86_64.tar.xz
 fi
@@ -139,7 +139,8 @@ make info | grep "Current Revision"
 create_custom
 
 make image PROFILE=generic FILES="files" PACKAGES="$val_base $val_more"
-
+cd bin/targets/x86/64
+ll
 mv -f *squashfs-combined.img.gz /opt/openwrt/image/
 
 }
@@ -161,7 +162,7 @@ pwd
 ls *.xz
 if [ $? != 0 ];then
   #wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/x86/64/openwrt-imagebuilder-21.02-SNAPSHOT-x86-64.Linux-x86_64.tar.xz
-  wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/x86/generic/openwrt-imagebuilder-21.02-SNAPSHOT-x86-generic.Linux-x86_64.tar.xz
+  wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/x86/generic/openwrt-imagebuilder-21.02-SNAPSHOT-x86-generic.Linux-x86_64.tar.xz > /dev/null
 
   tar -xf openwrt-imagebuilder-21.02-SNAPSHOT-x86-generic.Linux-x86_64.tar.xz
 fi
@@ -179,7 +180,8 @@ make info
 create_custom
 
 make image PROFILE=generic FILES="files" PACKAGES="$val_base $val_more"
-
+cd bin/targets/x86/generic
+ll
 mv -f *squashfs-combined.img.gz /opt/openwrt/image/
 
 }
@@ -195,7 +197,7 @@ ls *.xz
 if [ $? != 0 ];then
   #wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/x86/64/openwrt-imagebuilder-21.02-SNAPSHOT-x86-64.Linux-x86_64.tar.xz
   #wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/x86/generic/openwrt-imagebuilder-21.02-SNAPSHOT-x86-generic.Linux-x86_64.tar.xz
-  wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/ramips/mt7620/openwrt-imagebuilder-21.02-SNAPSHOT-ramips-mt7620.Linux-x86_64.tar.xz
+  wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/ramips/mt7620/openwrt-imagebuilder-21.02-SNAPSHOT-ramips-mt7620.Linux-x86_64.tar.xz > /dev/null
 
   tar -xf openwrt-imagebuilder-21.02-SNAPSHOT-ramips-mt7620.Linux-x86_64.tar.xz
 fi
@@ -211,7 +213,8 @@ make info
 create_custom
 
 make image PROFILE=phicomm_psg1218a FILES="files" PACKAGES="$val_base $val_more"
-
+cd bin/targets/ramips/mt7620
+ll
 mv -f *squashfs-sysupgrade.bin /opt/openwrt/image/
 
 }
@@ -228,7 +231,7 @@ if [ $? != 0 ];then
   #wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/x86/64/openwrt-imagebuilder-21.02-SNAPSHOT-x86-64.Linux-x86_64.tar.xz
   #wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/x86/generic/openwrt-imagebuilder-21.02-SNAPSHOT-x86-generic.Linux-x86_64.tar.xz
   #wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/ramips/mt7620/openwrt-imagebuilder-21.02-SNAPSHOT-ramips-mt7620.Linux-x86_64.tar.xz
-  wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/ramips/mt7621/openwrt-imagebuilder-21.02-SNAPSHOT-ramips-mt7621.Linux-x86_64.tar.xz
+  wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/ramips/mt7621/openwrt-imagebuilder-21.02-SNAPSHOT-ramips-mt7621.Linux-x86_64.tar.xz > /dev/null
 
   tar -xf openwrt-imagebuilder-21.02-SNAPSHOT-ramips-mt7621.Linux-x86_64.tar.xz
 fi
@@ -244,7 +247,8 @@ make info
 create_custom
 
 make image PROFILE=phicomm_k2p FILES="files" PACKAGES="$val_base $val_more"
-
+cd bin/targets/ramips/mt7621
+ll
 mv -f *squashfs-sysupgrade.bin /opt/openwrt/image/
 
 }
@@ -257,8 +261,8 @@ TZ='Asia/Shanghai'  date  '+%Y-%m-%d %H:%M:%S' >> readme.txt
 
 echo >> readme.txt
 echo md5校验值 >> readme.txt
-md5 *.bin >> readme.txt
-md5 *.gz >> readme.txt
+md5sum *.bin >> readme.txt
+md5sum *.gz >> readme.txt
 
 
 }
