@@ -43,20 +43,21 @@ set system.@system[0].zonename='Asia/Shanghai'
 set system.@system[0].timezone='CST-8'
 commit system
 
+#屏蔽掉,用默认值
 #lan ipv6 relay
-del dhcp.lan.ra_slaac
-set dhcp.lan.ra='relay'
-del dhcp.lan.ra_flags
-add_list dhcp.lan.ra_flags='none'
-set dhcp.lan.dhcpv6='relay'
-set dhcp.lan.ndp='relay'
+	#del dhcp.lan.ra_slaac
+	#set dhcp.lan.ra='relay'
+	#del dhcp.lan.ra_flags
+	#add_list dhcp.lan.ra_flags='none'
+	#set dhcp.lan.dhcpv6='relay'
+	#set dhcp.lan.ndp='relay'
 #wan ipv6 relay master
-set dhcp.wan.master='1'
-set dhcp.wan.ra='relay'
-add_list dhcp.wan.ra_flags='none'
-set dhcp.wan.dhcpv6='relay'
-set dhcp.wan.ndp='relay'
-commit dhcp
+	#set dhcp.wan.master='1'
+	#set dhcp.wan.ra='relay'
+	#add_list dhcp.wan.ra_flags='none'
+	#set dhcp.wan.dhcpv6='relay'
+	#set dhcp.wan.ndp='relay'
+	#commit dhcp
 
 add system tick
 commit 
