@@ -57,6 +57,7 @@ jobs:
         #echo "NAME=openwrt21.02稳定追新_${VERSION}" >> $GITHUB_ENV
         # 21.02.202110252202+openwrt稳定追新
         echo "NAME=21.02.1-${VERSION}+openwrt稳定追新" >> $GITHUB_ENV
+        echo "TAG=v21.02.1-${VERSION}+openwrt" >> $GITHUB_ENV
         # 两个发布条件
         if [ ${{ github.event.inputs.release == 'yes' }} ];then
           echo "TO_RELEASE=yes" >> $GITHUB_ENV
@@ -103,7 +104,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         name: ${{ env.NAME }}
-        tag_name: ${{ env.NAME }}
+        tag_name: ${{ env.TAG }}
         body_path: /opt/openwrt/image/readme.txt
         draft: false
         prerelease: false
