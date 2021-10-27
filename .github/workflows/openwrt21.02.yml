@@ -56,7 +56,7 @@ jobs:
         # $GITHUB_ENV变量必须要在下一个流程才生效
         #echo "NAME=openwrt21.02稳定追新_${VERSION}" >> $GITHUB_ENV
         # 21.02.202110252202+openwrt稳定追新
-        echo "NAME=21.02.${VERSION}+openwrt稳定追新" >> $GITHUB_ENV
+        echo "NAME=21.02.1-${VERSION}+openwrt稳定追新" >> $GITHUB_ENV
         # 两个发布条件
         if [ ${{ github.event.inputs.release == 'yes' }} ];then
           echo "TO_RELEASE=yes" >> $GITHUB_ENV
