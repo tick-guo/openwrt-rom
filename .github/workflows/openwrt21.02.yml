@@ -8,7 +8,8 @@ on:
   schedule:
    # UTC比中国少8个小时
    # 每天中国6-8=-2=22点编译
-   - cron:  '5 22 * * *'
+   # 每3天执行一次，降低频率 Runs at 22:05 UTC on the 1, 4, 7, 10, 13, 16, 19, 22, 25, 28 and 31st of every month.
+   - cron:  '5 22 */3 * *'
    #test
    #- cron:  '1/5 * * * *'
    
