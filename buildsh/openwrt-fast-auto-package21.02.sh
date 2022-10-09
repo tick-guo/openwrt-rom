@@ -138,7 +138,7 @@ pwd
 
 ls *.xz
 if [ $? != 0 ];then
-  wget https://downloads.openwrt.org/releases/22.03-SNAPSHOT/targets/x86/64/openwrt-imagebuilder-22.03-SNAPSHOT-x86-64.Linux-x86_64.tar.xz > /dev/null
+  wget -q https://downloads.openwrt.org/releases/22.03-SNAPSHOT/targets/x86/64/openwrt-imagebuilder-22.03-SNAPSHOT-x86-64.Linux-x86_64.tar.xz  
 
   tar -xf openwrt-imagebuilder-22.03-SNAPSHOT-x86-64.Linux-x86_64.tar.xz
 fi
@@ -179,7 +179,7 @@ pwd
 ls *.xz
 if [ $? != 0 ];then
  
-  wget https://downloads.openwrt.org/releases/22.03-SNAPSHOT/targets/x86/generic/openwrt-imagebuilder-22.03-SNAPSHOT-x86-generic.Linux-x86_64.tar.xz > /dev/null
+  wget -q https://downloads.openwrt.org/releases/22.03-SNAPSHOT/targets/x86/generic/openwrt-imagebuilder-22.03-SNAPSHOT-x86-generic.Linux-x86_64.tar.xz  
 
   tar -xf openwrt-imagebuilder-22.03-SNAPSHOT-x86-generic.Linux-x86_64.tar.xz
 fi
@@ -213,7 +213,7 @@ pwd
 ls *.xz
 if [ $? != 0 ];then
 
-  wget https://downloads.openwrt.org/releases/22.03-SNAPSHOT/targets/ramips/mt7620/openwrt-imagebuilder-22.03-SNAPSHOT-ramips-mt7620.Linux-x86_64.tar.xz > /dev/null
+  wget -q https://downloads.openwrt.org/releases/22.03-SNAPSHOT/targets/ramips/mt7620/openwrt-imagebuilder-22.03-SNAPSHOT-ramips-mt7620.Linux-x86_64.tar.xz 
 
   tar -xf openwrt-imagebuilder-22.03-SNAPSHOT-ramips-mt7620.Linux-x86_64.tar.xz
 fi
@@ -245,7 +245,7 @@ pwd
 ls *.xz
 if [ $? != 0 ];then
 
-  wget https://downloads.openwrt.org/releases/22.03-SNAPSHOT/targets/ramips/mt7621/openwrt-imagebuilder-22.03-SNAPSHOT-ramips-mt7621.Linux-x86_64.tar.xz > /dev/null
+  wget -q  https://downloads.openwrt.org/releases/22.03-SNAPSHOT/targets/ramips/mt7621/openwrt-imagebuilder-22.03-SNAPSHOT-ramips-mt7621.Linux-x86_64.tar.xz  
 
   tar -xf openwrt-imagebuilder-22.03-SNAPSHOT-ramips-mt7621.Linux-x86_64.tar.xz
 fi
@@ -278,7 +278,7 @@ pwd
 ls *.xz
 if [ $? != 0 ];then
   
-  wget  https://downloads.openwrt.org/snapshots/targets/x86/64/openwrt-imagebuilder-x86-64.Linux-x86_64.tar.xz
+  wget -q  https://downloads.openwrt.org/snapshots/targets/x86/64/openwrt-imagebuilder-x86-64.Linux-x86_64.tar.xz
 
   tar -xf openwrt-imagebuilder-x86-64.Linux-x86_64.tar.xz
 fi
@@ -311,7 +311,7 @@ pwd
 
 ls *.xz
 if [ $? != 0 ];then
-  wget https://downloads.openwrt.org/snapshots/targets/x86/generic/openwrt-imagebuilder-x86-generic.Linux-x86_64.tar.xz > /dev/null
+  wget -q https://downloads.openwrt.org/snapshots/targets/x86/generic/openwrt-imagebuilder-x86-generic.Linux-x86_64.tar.xz 
 
   tar -xf openwrt-imagebuilder-x86-generic.Linux-x86_64.tar.xz
 fi
@@ -347,7 +347,7 @@ pwd
 ls *.xz
 if [ $? != 0 ];then
  
-  wget https://downloads.openwrt.org/snapshots/targets/ramips/mt7620/openwrt-imagebuilder-ramips-mt7620.Linux-x86_64.tar.xz > /dev/null
+  wget -q https://downloads.openwrt.org/snapshots/targets/ramips/mt7620/openwrt-imagebuilder-ramips-mt7620.Linux-x86_64.tar.xz  
 
   tar -xf openwrt-imagebuilder-ramips-mt7620.Linux-x86_64.tar.xz
 fi
@@ -380,7 +380,7 @@ pwd
 ls *.xz
 if [ $? != 0 ];then
 
-  wget https://downloads.openwrt.org/snapshots/targets/ramips/mt7621/openwrt-imagebuilder-ramips-mt7621.Linux-x86_64.tar.xz > /dev/null
+  wget -q  https://downloads.openwrt.org/snapshots/targets/ramips/mt7621/openwrt-imagebuilder-ramips-mt7621.Linux-x86_64.tar.xz  
 
   tar -xf openwrt-imagebuilder-ramips-mt7621.Linux-x86_64.tar.xz
 fi
