@@ -1,6 +1,6 @@
 # This is a basic workflow that is manually triggered
 
-name: openwrt21.02稳定和追新
+name: openwrt22.03.X稳定和追新
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
@@ -55,10 +55,8 @@ jobs:
         # 版本号,用日期
         VERSION=$(TZ='Asia/Shanghai' date +%Y%m%d%H%M)
         # $GITHUB_ENV变量必须要在下一个流程才生效
-        #echo "NAME=openwrt21.02稳定追新_${VERSION}" >> $GITHUB_ENV
-        # 21.02.202110252202+openwrt稳定追新
-        echo "NAME=21.02.1-${VERSION}+openwrt稳定追新" >> $GITHUB_ENV
-        echo "TAG=v21.02.1-${VERSION}+openwrt" >> $GITHUB_ENV
+        echo "NAME=22.03.X-${VERSION}+openwrt稳定追新" >> $GITHUB_ENV
+        echo "TAG=v22.03.X-${VERSION}+openwrt" >> $GITHUB_ENV
         # 两个发布条件
         if [ ${{ github.event.inputs.release == 'yes' }} ];then
           echo "TO_RELEASE=yes" >> $GITHUB_ENV
