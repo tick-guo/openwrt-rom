@@ -135,12 +135,12 @@ pwd
 
 ls *.xz
 if [ $? != 0 ];then
-  wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/x86/64/openwrt-imagebuilder-21.02-SNAPSHOT-x86-64.Linux-x86_64.tar.xz > /dev/null
+  wget https://downloads.openwrt.org/releases/22.03-SNAPSHOT/targets/x86/64/openwrt-imagebuilder-22.03-SNAPSHOT-x86-64.Linux-x86_64.tar.xz > /dev/null
 
-  tar -xf openwrt-imagebuilder-21.02-SNAPSHOT-x86-64.Linux-x86_64.tar.xz
+  tar -xf openwrt-imagebuilder-22.03-SNAPSHOT-x86-64.Linux-x86_64.tar.xz
 fi
 
-cd openwrt-imagebuilder-21.02-SNAPSHOT-x86-64.Linux-x86_64
+cd openwrt-imagebuilder-22.03-SNAPSHOT-x86-64.Linux-x86_64
 
 #差异包
 val_base="\
@@ -175,13 +175,13 @@ pwd
 
 ls *.xz
 if [ $? != 0 ];then
-  #wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/x86/64/openwrt-imagebuilder-21.02-SNAPSHOT-x86-64.Linux-x86_64.tar.xz
-  wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/x86/generic/openwrt-imagebuilder-21.02-SNAPSHOT-x86-generic.Linux-x86_64.tar.xz > /dev/null
+ 
+  wget https://downloads.openwrt.org/releases/22.03-SNAPSHOT/targets/x86/generic/openwrt-imagebuilder-22.03-SNAPSHOT-x86-generic.Linux-x86_64.tar.xz > /dev/null
 
-  tar -xf openwrt-imagebuilder-21.02-SNAPSHOT-x86-generic.Linux-x86_64.tar.xz
+  tar -xf openwrt-imagebuilder-22.03-SNAPSHOT-x86-generic.Linux-x86_64.tar.xz
 fi
 
-cd openwrt-imagebuilder-21.02-SNAPSHOT-x86-generic.Linux-x86_64
+cd openwrt-imagebuilder-22.03-SNAPSHOT-x86-generic.Linux-x86_64
 
 ##差异包
 val_base="\
@@ -209,14 +209,13 @@ pwd
 
 ls *.xz
 if [ $? != 0 ];then
-  #wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/x86/64/openwrt-imagebuilder-21.02-SNAPSHOT-x86-64.Linux-x86_64.tar.xz
-  #wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/x86/generic/openwrt-imagebuilder-21.02-SNAPSHOT-x86-generic.Linux-x86_64.tar.xz
-  wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/ramips/mt7620/openwrt-imagebuilder-21.02-SNAPSHOT-ramips-mt7620.Linux-x86_64.tar.xz > /dev/null
 
-  tar -xf openwrt-imagebuilder-21.02-SNAPSHOT-ramips-mt7620.Linux-x86_64.tar.xz
+  wget https://downloads.openwrt.org/releases/22.03-SNAPSHOT/targets/ramips/mt7620/openwrt-imagebuilder-22.03-SNAPSHOT-ramips-mt7620.Linux-x86_64.tar.xz > /dev/null
+
+  tar -xf openwrt-imagebuilder-22.03-SNAPSHOT-ramips-mt7620.Linux-x86_64.tar.xz
 fi
 
-cd openwrt-imagebuilder-21.02-SNAPSHOT-ramips-mt7620.Linux-x86_64
+cd openwrt-imagebuilder-22.03-SNAPSHOT-ramips-mt7620.Linux-x86_64
 
 ##差异包
 val_base="\
@@ -242,15 +241,13 @@ pwd
 
 ls *.xz
 if [ $? != 0 ];then
-  #wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/x86/64/openwrt-imagebuilder-21.02-SNAPSHOT-x86-64.Linux-x86_64.tar.xz
-  #wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/x86/generic/openwrt-imagebuilder-21.02-SNAPSHOT-x86-generic.Linux-x86_64.tar.xz
-  #wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/ramips/mt7620/openwrt-imagebuilder-21.02-SNAPSHOT-ramips-mt7620.Linux-x86_64.tar.xz
-  wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/ramips/mt7621/openwrt-imagebuilder-21.02-SNAPSHOT-ramips-mt7621.Linux-x86_64.tar.xz > /dev/null
 
-  tar -xf openwrt-imagebuilder-21.02-SNAPSHOT-ramips-mt7621.Linux-x86_64.tar.xz
+  wget https://downloads.openwrt.org/releases/22.03-SNAPSHOT/targets/ramips/mt7621/openwrt-imagebuilder-22.03-SNAPSHOT-ramips-mt7621.Linux-x86_64.tar.xz > /dev/null
+
+  tar -xf openwrt-imagebuilder-22.03-SNAPSHOT-ramips-mt7621.Linux-x86_64.tar.xz
 fi
 
-cd openwrt-imagebuilder-21.02-SNAPSHOT-ramips-mt7621.Linux-x86_64
+cd openwrt-imagebuilder-22.03-SNAPSHOT-ramips-mt7621.Linux-x86_64
 
 ##差异包
 val_base="\
@@ -277,7 +274,7 @@ pwd
 
 ls *.xz
 if [ $? != 0 ];then
-  #wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/x86/64/openwrt-imagebuilder-21.02-SNAPSHOT-x86-64.Linux-x86_64.tar.xz > /dev/null
+  
   wget  https://downloads.openwrt.org/snapshots/targets/x86/64/openwrt-imagebuilder-x86-64.Linux-x86_64.tar.xz
 
   tar -xf openwrt-imagebuilder-x86-64.Linux-x86_64.tar.xz
@@ -428,12 +425,12 @@ EOF
 
 }
 
-#最新开发版
+#最新开发版,在master上
 buildk2pdev
 buildk2dev
 build32dev
 build64dev
-#21.02 稳定版
+#22.03.X 稳定版
 buildk2p
 buildk2
 build32
