@@ -1,5 +1,7 @@
 #!/bin/bash
 
+alias ll='ls -l --color=auto'
+
 sudo mkdir -m 777 -p /opt/openwrt/image
 if [ ! -d /opt/openwrt ];then
   echo 目录创建失败:/opt/openwrt
@@ -112,9 +114,10 @@ val_office="\
 #自定义附加包,用中文语言文件,自动引入原包
 #ddns依赖wget-ssl,curl,drill
 #luci-i18n-ttyd-zh-cn https有问题
+#luci-i18n-base-en  这个包没有,去掉
 val_more="$val_office  \
  \
-luci-i18n-base-en \
+
 luci-i18n-base-zh-cn \
 luci-i18n-ddns-zh-cn wget-ssl curl drill \
 luci-i18n-firewall-zh-cn \
