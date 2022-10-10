@@ -1,6 +1,10 @@
 #!/bin/bash
 
-alias ll='ls -l --color=auto'
+#alias ll='ls -l --color=auto'
+
+function ll(){
+ls -la 
+}
 
 sudo mkdir -m 777 -p /opt/openwrt/image
 if [ ! -d /opt/openwrt ];then
@@ -76,8 +80,14 @@ popd
 }
 
 #官方默认包
+#参考 https://downloads.openwrt.org/releases/22.03-SNAPSHOT/targets/x86/64/config.buildinfo
+#CONFIG_PACKAGE_cgi-io=y ... ... 
 val_office="\
  cgi-io \
+ libbpf \
+ libelf \
+ libiwinfo \
+ libiwinfo-data \
  libiwinfo-lua \
  liblua \
  liblucihttp \
@@ -101,13 +111,17 @@ val_office="\
  luci-ssl \
  luci-theme-bootstrap \
  px5g-wolfssl \
+ qosify \
  rpcd \
  rpcd-mod-file \
  rpcd-mod-iwinfo \
  rpcd-mod-luci \
  rpcd-mod-rrdns \
+ tc-full \
+ tc-mod-iptables \
  uhttpd \
  uhttpd-mod-ubus \
+ zlib \
  "
  
 #公用
@@ -116,8 +130,6 @@ val_office="\
 #luci-i18n-ttyd-zh-cn https有问题
 #luci-i18n-base-en  这个包没有,去掉
 val_more="$val_office  \
- \
-
 luci-i18n-base-zh-cn \
 luci-i18n-ddns-zh-cn wget-ssl curl drill \
 luci-i18n-firewall-zh-cn \
@@ -151,7 +163,7 @@ val_base="\
  libiwinfo-data \
  "
 
-make info | grep "Current Revision"
+#make info | grep "Current Revision"
 
 create_custom
 
@@ -192,7 +204,7 @@ val_base="\
  libiwinfo-data \
  "
 
-make info 
+#make info 
 
 create_custom
 
@@ -224,7 +236,7 @@ cd openwrt-imagebuilder-22.03-SNAPSHOT-ramips-mt7620.Linux-x86_64
 val_base="\
  "
 
-make info 
+#make info 
 
 create_custom
 
@@ -256,7 +268,7 @@ cd openwrt-imagebuilder-22.03-SNAPSHOT-ramips-mt7621.Linux-x86_64
 val_base="\
  "
 
-make info 
+#make info 
 
 create_custom
 
@@ -291,7 +303,7 @@ val_base="\
  libiwinfo-data \
  "
 
-make info | grep "Current Revision"
+#make info | grep "Current Revision"
 
 create_custom
 
@@ -324,7 +336,7 @@ val_base="\
  libiwinfo-data \
  "
 
-make info 
+#make info 
 
 create_custom
 
@@ -358,7 +370,7 @@ cd openwrt-imagebuilder-ramips-mt7620.Linux-x86_64
 val_base="\
  "
 
-make info 
+#make info 
 
 create_custom
 
@@ -391,7 +403,7 @@ cd openwrt-imagebuilder-ramips-mt7621.Linux-x86_64
 val_base="\
  "
 
-make info 
+#make info 
 
 create_custom
 
