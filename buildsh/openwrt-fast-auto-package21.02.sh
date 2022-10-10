@@ -240,7 +240,12 @@ val_base="\
 
 create_custom
 
-make image PROFILE=phicomm_psg1218a FILES="files" PACKAGES="$val_base $val_more"
+#空间不够,减少包
+make image PROFILE=phicomm_k2-v22.4 FILES="files" PACKAGES="$val_base $val_office luci-i18n-base-zh-cn \
+luci-i18n-firewall-zh-cn \
+luci-i18n-opkg-zh-cn \
+luci-i18n-upnp-zh-cn "
+
 cd bin/targets/ramips/mt7620
 ll
 mv -f *squashfs-sysupgrade.bin /opt/openwrt/image/
@@ -374,7 +379,12 @@ val_base="\
 
 create_custom
 
-make image PROFILE=phicomm_k2-v22.4 FILES="files" PACKAGES="$val_base $val_more"
+#空间不够,减少包
+make image PROFILE=phicomm_k2-v22.4 FILES="files" PACKAGES="$val_base $val_office luci-i18n-base-zh-cn \
+luci-i18n-firewall-zh-cn \
+luci-i18n-opkg-zh-cn \
+luci-i18n-upnp-zh-cn "
+
 cd bin/targets/ramips/mt7620
 #openwrt-ramips-mt7620-phicomm_k2-v22.4-squashfs-sysupgrade.bin
 ll
