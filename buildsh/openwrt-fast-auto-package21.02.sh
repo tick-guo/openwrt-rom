@@ -132,13 +132,14 @@ val_office="\
 val_more="$val_office  \
 luci-i18n-base-zh-cn \
 luci-i18n-ddns-zh-cn wget-ssl curl drill \
-luci-i18n-firewall-zh-cn \
+#luci-i18n-firewall-zh-cn \
 luci-i18n-opkg-zh-cn \
 luci-i18n-statistics-zh-cn \
-luci-i18n-upnp-zh-cn \
+#luci-i18n-upnp-zh-cn \
 luci-i18n-wifischedule-zh-cn \
 luci-i18n-wol-zh-cn \
-luci-i18n-uhttpd-zh-cn \
+#luci-i18n-uhttpd-zh-cn \
+shadowsocks-libev-ss-server \
 "
 
 function build64(){
